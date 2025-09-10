@@ -1,0 +1,60 @@
+{
+  "name": "interview",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "concurrently npm:start:client npm:start:server",
+    "start:client": "wait-on -l tcp:8443 && cross-env PORT=5001 HTTPS=true SSL_CRT_FILE=dev-certs/server-crt.pem SSL_KEY_FILE=dev-certs/server-key.pem TSC_COMPILE_ON_ERROR=true react-scripts start",
+    "start:server": "concurrently npm:dev:server:webpack npm:dev:server:nodemon",
+    "dev:server:webpack": "webpack --config webpack.config.server.js --watch",
+    "dev:server:nodemon": "rm -f build/server.js && wait-on -l build/server.js && nodemon build/server.js",
+    "test": "cross-env EXPRESS_PORT=8444 react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "proxy": "https://localhost:8443",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@testing-library/jest-dom": "^6.4.2",
+    "@testing-library/react": "^15.0.4",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.12.7",
+    "@types/react": "^18.2.79",
+    "@types/react-dom": "^18.2.25",
+    "@types/supertest": "^6.0.2",
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.1.0",
+    "react-scripts": "^5.0.1",
+    "supertest": "^7.0.0",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.4.5",
+    "wait-on": "^7.2.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-node-externals": "^3.0.0"
+  },
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "dayjs": "^1.11.11",
+    "express": "^4.19.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

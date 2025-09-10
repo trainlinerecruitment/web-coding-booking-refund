@@ -1,0 +1,48 @@
+.booking-card {
+    border-radius: 0.5rem;
+    padding: 1rem;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+}
+
+.booking-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.header__title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 0;
+    text-wrap: nowrap;
+}
+
+.booking-card__body {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.booking-card__footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: auto;
+}
+
+.booking-card__refund {
+    padding: 0.5rem 1rem;
+    background-color: #d10e0e;
+    color: white;
+    border: none;
+    border-radius: 0.3rem;
+}
+
+.booking-card__refund:hover {
+    background-color: #ff5555;
+}
